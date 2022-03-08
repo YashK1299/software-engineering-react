@@ -6,11 +6,11 @@ import {UserList} from "./user-list";
 
 export const Login = () => {
   const [existingUsers, setExistingUsers] = useState([]);
-    // {username: 'user1', email: 'user1', password: 'user1', _id: '123'}
+  //   {username: 'user1', email: 'user1', password: 'user1', _id: '123'}
   // ]);
   const [newUser, setNewUser] = useState({});
   const [loginUser, setLoginUser] = useState({});
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const uuu = [
     {username: 'ellen_ripley', email: 'ellen_ripley', password: 'ellen_ripley', _id: '123'},
@@ -31,7 +31,7 @@ export const Login = () => {
   const login = () =>
     service.findUserByCredentials(loginUser)
       .then((user) => {
-        //navigate(`/home/${user._id}`)
+        navigate(`/home/${user._id}`)
       });
   useEffect(findAllUsers, []);
   return (
