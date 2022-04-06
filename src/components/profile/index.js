@@ -1,5 +1,6 @@
-import {Link, useNavigate, useLocation} from "react-router-dom";
+import {Link, Route, Routes, useNavigate, useLocation} from "react-router-dom";
 import React, {useEffect, useState} from "react";
+import MyTuits from "./my-tuits";
 import * as service from "../../services/auth-service";
 
 const Profile = () => {
@@ -92,6 +93,10 @@ const Profile = () => {
           </ul>
         </div>
       </div>
+      <Routes>
+        <Route path="/mytuits"
+               element={<MyTuits/>}/>
+      </Routes>
     </div>
   );
 }
