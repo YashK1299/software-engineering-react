@@ -3,18 +3,17 @@ import * as service from "../../services/tuits-service";
 import Tuits from "../tuits";
 
 const MyTuits = () => {
-  const [tuits, setTuits] = useState([]);
-  const findMyTuits = () =>
-    service.findTuitByUser("me")
-      .then(tuits => setTuits(tuits));
-  useEffect(findMyTuits, []);
-  const deleteTuit = (tid) =>
-    service.deleteTuit(tid)
-      .then(findMyTuits);
-  return(
-    <Tuits tuits={tuits}
-           deleteTuit={deleteTuit}/>
-  );
+    const [tuits, setTuits] = useState([]);
+    const findMyTuits = () =>
+    {console.log("findmytuits")
+        service.findTuitByUser("me")
+            .then(tuits => setTuits(tuits));
+    }
+    useEffect(findMyTuits, []);
+    return(
+        <Tuits tuits={tuits}
+               refreshTuits={findMyTuits}/>
+    );
 };
 
 export default MyTuits;

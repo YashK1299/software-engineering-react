@@ -1,8 +1,7 @@
-import {Link, Route, Routes, useNavigate, useLocation} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import MyTuits from "./my-tuits";
+import {Link, Route, Routes, useNavigate, useLocation} from "react-router-dom";
 import * as service from "../../services/auth-service";
-
 const Profile = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -82,21 +81,17 @@ const Profile = () => {
             </li>
             <li className="nav-item">
               <Link to="/profile/likes"
-                    className={`nav-link ${location.pathname.indexOf('mylikes') >= 0 ? 'active':''}`}>
+                    className={`nav-link ${location.pathname.indexOf('likes') >= 0 ? 'active':''}`}>
                 Likes</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/profile/dislikes"
-                    className={`nav-link ${location.pathname.indexOf('mydislikes') >= 0 ? 'active':''}`}>
-                Dislikes</Link>
             </li>
           </ul>
         </div>
       </div>
-      <Routes>
-        <Route path="/mytuits"
-               element={<MyTuits/>}/>
-      </Routes>
+      {profile.username &&
+          <Routes>
+            <Route path="/mytuits" element={<MyTuits/>}/>
+          </Routes>
+      }
     </div>
   );
 }
