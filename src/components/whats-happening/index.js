@@ -23,6 +23,7 @@ function WhatsHappening() {
              {wh.content}
             </div>
             <h4 className="fs-6 fw-lighter">{wh.likes} likes</h4>
+            <h4 className="fs-6 fw-lighter">{wh.dislikes} dislikes</h4>
            </div>
            <div>
             <img src={`../images/${wh['user-logo']}`}
