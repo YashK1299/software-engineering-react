@@ -1,6 +1,6 @@
 import { act } from 'react-dom/test-utils';
 import Profile from "../components/profile/index"
-import MyLikes from "../components/profile/my-likes"
+import MyDislikes from "../components/profile/my-dislikes"
 import {screen, render} from "@testing-library/react";
 import {HashRouter} from "react-router-dom";
 import 'regenerator-runtime/runtime';
@@ -14,7 +14,7 @@ const MOCKED_TUIT =
 const mockAxios = jest.genMockFromModule('axios')
 mockAxios.create = jest.fn(() => mockAxios)
 
-test('renders likes tab on profile', async() => {
+test('renders dislikes tab on profile', async() => {
     mockAxios.get.mockImplementation(() =>
         Promise.resolve({ data: MOCKED_USER }));
 
@@ -24,7 +24,7 @@ test('renders likes tab on profile', async() => {
         </HashRouter>
     ));
 
-    const likeTab = screen.getAllByText(/Likes/i);
-    console.log(likeTab);
-    expect(likeTab[0]).toBeInTheDocument();
+    const dislikeTab = screen.getAllByText(/Likes/i);
+    console.log(dislikeTab);
+    expect(dislikeTab[0]).toBeInTheDocument();
 })
