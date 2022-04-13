@@ -1,5 +1,5 @@
 /**
- * @file Implement unit tests for like button.
+ * @file Implement unit tests for dislike button.
  */
  import TuitStats from "../components/tuits/tuit-stats";
  import { act } from 'react-dom/test-utils';
@@ -28,18 +28,18 @@ const BASE_URL = "https://fse-node-a4-app.herokuapp.com"
  let dislikeTuitMock = jest.fn();
  let likeTuitMock = jest.fn();
 
- test('tuit stats renders like button', async() => {
+ test('tuit stats renders dislike button', async() => {
      await act( async () => render(
          <HashRouter>
              <TuitStats tuit={MOCKED_TUIT} likeTuit={likeTuitMock} dislikeTuit={dislikeTuitMock}/>
          </HashRouter>
      ));
 
-     const likeButton = screen.getByTestId('test-likeButton');
-     expect(likeButton).toBeInTheDocument();
+     const dislikeButton = screen.getByTestId('test-dislikeButton');
+     expect(dislikeButton).toBeInTheDocument();
  })
 
- test('tuit stats renders like stats', async() => {
+ test('tuit stats renders dislike stats', async() => {
 
      await act( async () => render(
          <HashRouter>
@@ -47,19 +47,19 @@ const BASE_URL = "https://fse-node-a4-app.herokuapp.com"
          </HashRouter>
      ));
 
-     const likeStat = screen.getByText(/5/i);
-     expect(likeStat).toBeInTheDocument();
+     const dislikeStat = screen.getByText(/5/i);
+     expect(dislikeStat).toBeInTheDocument();
  })
 
- test('click like button will trigger likeTuitMock function', async() => {
+ test('click dislike button will trigger dislikeTuitMock function', async() => {
      await act( async () => render(
          <HashRouter>
              <TuitStats tuit={MOCKED_TUIT} likeTuit={likeTuitMock} dislikeTuit={dislikeTuitMock}/>
          </HashRouter>
      ));
 
-     const likeButton = screen.getByTestId('test-likeButton');
-     await fireEvent.click(likeButton);
-     expect(likeTuitMock).toHaveBeenCalledTimes(1);
-     expect(screen.getByText(MOCKED_TUIT.stats.likes)).toBeInTheDocument();
+     const dislikeButton = screen.getByTestId('test-dislikeButton');
+     await fireEvent.click(dislikeButton);
+     expect(dislikeTuitMock).toHaveBeenCalledTimes(1);
+     expect(screen.getByText(MOCKED_TUIT.stats.dislikes)).toBeInTheDocument();
  })
